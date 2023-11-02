@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.tyaa.training.server.models.RoleModel;
 import org.tyaa.training.server.services.interfaces.IAuthService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +28,6 @@ public class AuthController {
      * */
     @GetMapping("/admin/roles")
     public ResponseEntity<List<RoleModel>> getRoles () {
-        List<RoleModel> roleModels = authService.getRoles();
-        return new ResponseEntity<>(roleModels, HttpStatus.OK);
+        return new ResponseEntity<>(authService.getRoles(), HttpStatus.OK);
     }
 }
