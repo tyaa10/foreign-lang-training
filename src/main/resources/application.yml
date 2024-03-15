@@ -26,4 +26,4 @@ spring:
 # ===============================
 custom:
   init-data:
-    roles: admin, customer
+    roles: ROLE_ADMIN, ROLE_CUSTOMER

@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 /**
  * Сущность роли пользователя
  * */
@@ -26,4 +28,7 @@ public class RoleEntity {
     @Column(name = "name", nullable = false, unique = true)
     @Size(min = 1, max = 16, message = "Value out of range [1; 16] characters")
     private String name;
+
+    @OneToMany(mappedBy="role", fetch = FetchType.LAZY)
+    private Set<UserEntity> users;
 }

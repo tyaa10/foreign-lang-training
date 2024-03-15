@@ -12,8 +12,11 @@ import org.tyaa.training.server.entities.RoleEntity;
  * */
 @Repository
 public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
+
     @Modifying
     @Transactional
     @Query(value = "TRUNCATE TABLE Roles RESTART IDENTITY", nativeQuery = true)
     void truncateTable();
+
+    RoleEntity findRoleByName(String name);
 }

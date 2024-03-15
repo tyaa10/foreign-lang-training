@@ -8,21 +8,29 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Модель роли пользователя
+ * Модель пользователя
  * */
 @Data
 @Builder(toBuilder = true)
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RoleModel {
+public class UserModel {
     /**
-     * Локально уникальный идентификатор
+     * Логин
      * */
-    public Long id;
+    public String name;
+    /**
+     * Пароль
+     * */
+    private String password;
+    /**
+     * Идентификатор роли
+     * */
+    public Long roleId;
     /**
      * Название роли
      * */
-    public String name;
+    public String roleName;
 }
