@@ -17,13 +17,16 @@ spring:
     password: ${PG_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
 # ===============================
 # Custom Static Data
 # ===============================
 custom:
   init-data:
-    roles: admin, customer
+    roles: ROLE_ADMIN, ROLE_CUSTOMER
