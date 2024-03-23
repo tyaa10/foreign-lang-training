@@ -46,6 +46,7 @@ public class AuthController {
         return new ResponseEntity<>(responseModel, httpStatus);
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("/admin/roles/{id}/users")
     public ResponseEntity<ResponseModel> getUsersByRole(@PathVariable Long id) {
         ResponseModel responseModel =
