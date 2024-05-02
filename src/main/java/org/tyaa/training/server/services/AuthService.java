@@ -62,7 +62,7 @@ public class AuthService implements IAuthService {
                 UserEntity.builder()
                         .name(userModel.getName().trim())
                         .password(passwordEncoder.encode(userModel.getPassword()))
-                        .role(roleRepository.findRoleByName("ROLE_USER"))
+                        .role(roleRepository.findRoleByName("ROLE_CUSTOMER"))
                         .build();
         userRepository.save(user);
         return ResponseModel.builder()

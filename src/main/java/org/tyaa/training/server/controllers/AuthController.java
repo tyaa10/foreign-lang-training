@@ -1,5 +1,6 @@
 package org.tyaa.training.server.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
@@ -13,6 +14,7 @@ import org.tyaa.training.server.services.interfaces.IAuthService;
 /**
  * Контроллер аутентификации для регистрации, входа и выхода пользователей
  * */
+@Tag(name = "Authentication", description = "Authentication, users, roles")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -67,9 +69,9 @@ public class AuthController {
                 responseModel,
                 (responseModel.getMessage().toLowerCase().contains("created"))
                         ? HttpStatus.CREATED
-                        : responseModel.getMessage().contains("name")
+                        : (responseModel.getMessage().contains("name")
                         ? HttpStatus.CONFLICT
-                        : HttpStatus.BAD_GATEWAY
+                        : HttpStatus.BAD_GATEWAY)
         );
     }
 
@@ -79,7 +81,7 @@ public class AuthController {
     }
 
     @Secured("ROLE_ADMIN")
-    @PatchMapping(value = "/users/{id}/makeadmin")
+    @PatchMapping(value = "/admin/users/{id}/makeadmin")
     public ResponseEntity<ResponseModel> makeUserAdmin(@PathVariable Long id) throws Exception {
         return new ResponseEntity<>(authService.makeUserAdmin(id), HttpStatus.OK);
     }
