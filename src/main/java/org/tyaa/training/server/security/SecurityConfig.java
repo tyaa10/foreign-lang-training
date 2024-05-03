@@ -63,7 +63,7 @@ public class SecurityConfig implements WebMvcConfigurer {
                     .authenticationEntryPoint(restAuthenticationEntryPoint))
             .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
                 // запросы к конечной точке "документация REST API" любыми методами разрешены всем
-                .requestMatchers( "/v3/api-docs/**", "/swagger-ui/**").permitAll()
+                .requestMatchers( "/v3/api-docs/**", "/swagger-ui/**", "/error/**").permitAll()
                 // запросы к конечной точке "пользователи" методом GET разрешены всем
                 .requestMatchers(HttpMethod.GET, "/api/auth/users/**").permitAll()
                 // запросы к конечной точке "пользователи" методом POST разрешены всем
