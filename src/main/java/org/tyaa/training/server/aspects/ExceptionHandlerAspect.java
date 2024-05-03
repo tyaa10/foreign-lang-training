@@ -6,7 +6,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.context.annotation.Configuration;
 import org.tyaa.training.server.models.ResponseModel;
-import org.tyaa.training.server.utils.ErrorsGetter;
 
 /**
  * Набор служебных методов, внутри которых будут вызываться основные методы приложения

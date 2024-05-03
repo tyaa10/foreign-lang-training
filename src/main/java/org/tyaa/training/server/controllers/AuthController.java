@@ -30,14 +30,14 @@ public class AuthController {
     /**
      * Получение списка всех ролей, которые могут иметь пользователи
      * */
-    @Operation(method = "Get all roles")
+    @Operation(summary = "Get all roles")
     @Secured("ROLE_ADMIN")
     @GetMapping("/admin/roles")
     public ResponseEntity<ResponseModel> getRoles () {
         return new ResponseEntity<>(authService.getRoles(), HttpStatus.OK);
     }
 
-    @Operation(method = "Create a new role")
+    @Operation(summary = "Create a new role")
     @Secured("ROLE_ADMIN")
     @PostMapping("/admin/roles")
     public ResponseEntity<ResponseModel> createRole (@RequestBody RoleModel roleModel) {
@@ -52,7 +52,7 @@ public class AuthController {
         );
     }
 
-    @Operation(method = "Get users with specific role id")
+    @Operation(summary = "Get users with specific role id")
     @Secured("ROLE_ADMIN")
     @GetMapping("/admin/roles/{id}/users")
     public ResponseEntity<ResponseModel> getUsersByRole(@PathVariable Long id) {
@@ -66,7 +66,7 @@ public class AuthController {
         );
     }
 
-    @Operation(method = "Create a new user")
+    @Operation(summary = "Create a new user")
     @PostMapping("/users")
     public ResponseEntity<ResponseModel> createUser(@RequestBody UserModel userModel) {
         ResponseModel responseModel =
@@ -81,20 +81,20 @@ public class AuthController {
         );
     }
 
-    @Operation(method = "Delete user by id")
+    @Operation(summary = "Delete user by id")
     @DeleteMapping(value = "/users/{id}")
     public ResponseEntity<ResponseModel> deleteUser(@PathVariable Long id) {
         return new ResponseEntity<>(authService.deleteUser(id), HttpStatus.NO_CONTENT);
     }
 
-    @Operation(method = "Make the user an admin by id")
+    @Operation(summary = "Make the user an admin by id")
     @Secured("ROLE_ADMIN")
     @PatchMapping(value = "/admin/users/{id}/makeadmin")
     public ResponseEntity<ResponseModel> makeUserAdmin(@PathVariable Long id) throws Exception {
         return new ResponseEntity<>(authService.makeUserAdmin(id), HttpStatus.OK);
     }
 
-    @Operation(method = "Check if the user is a guest or not")
+    @Operation(summary = "Check if the user is a guest or not")
     @GetMapping(value = "/users/check")
     // @ResponseBody
     /** @param authentication объект стандартного типа с данными учетной записи
